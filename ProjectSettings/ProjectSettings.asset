@@ -687,11 +687,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: a2064b5b-81b3-4baa-803c-600fa2788dd1
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Tower Defense 2026-09-24_00-28-43
+  organizationId: pztkawall
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

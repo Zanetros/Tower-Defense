@@ -565,17 +565,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 825280787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa51dc95573e3124f880970c4ebb9f3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 64e84550548896248992e9ce44982008, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Core.PerformanceDiagnostic
-  showOverlay: 1
-  fontSize: 16
-  deltaTime: 0
-  updateInterval: 0.2
-  timeSinceLastUpdate: 0
-  currentFps: 0
-  currentFrameTimeMs: 0
-  totalAllocatedMemoryMB: 0
+  m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Wave.WaveManager
+  levelData: {fileID: 11400000, guid: 6cad1166183dd0f40988d645cd6d3f77, type: 2}
+  enemySpawner: {fileID: 517277586}
+  autoStart: 0
 --- !u!1 &909480627
 GameObject:
   m_ObjectHideFlags: 0

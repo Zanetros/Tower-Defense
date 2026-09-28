@@ -43,6 +43,15 @@ namespace TowerDefense.Spawner
         public int EnemiesSpawnedCount => enemiesSpawnedCount;
         public IObjectPool<Enemy> EnemyPool => enemyPool;
 
+        /// <summary>
+        /// Allows external systems (e.g. WaveManager) to disable auto-start before Start() runs.
+        /// </summary>
+        public bool AutoStartSpawning
+        {
+            get => autoStartSpawning;
+            set => autoStartSpawning = value;
+        }
+
         private void Awake()
         {
             InitializePool();

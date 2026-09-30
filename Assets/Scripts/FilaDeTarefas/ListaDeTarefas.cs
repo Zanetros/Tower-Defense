@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
+using TMPro;
 
 public class ListaDeTarefas : MonoBehaviour
 {
-    public GameObject Icone1, Icone2, Icone3, Icone4, Icone5, PrefabIcone, Tarefa1, Tarefa2, Tarefa3, Tarefa4, Tarefa5, ObjClicado, Pos1, Pos2, Pos3, Pos4, Pos5, IconeColocado;
+    public GameObject Icone1, Icone2, Icone3, Icone4, Icone5, PrefabIcone, Tarefa1, Tarefa2, Tarefa3, Tarefa4, Tarefa5, ObjClicado, Pos1, Pos2, Pos3, Pos4, Pos5, IconeColocado,
+    numeradorIconeTarefa1, numeradorIconeTarefa2, numeradorIconeTarefa3, numeradorIconeTarefa4, numeradorIconeTarefa5;
     public bool ativar, acaoFinalizada;
-    private int numeradorIconeTarefa1, numeradorIconeTarefa2, numeradorIconeTarefa3, numeradorIconeTarefa4, numeradorIconeTarefa5, timerGeral,
+    private int timerGeral,
     timer1 = 0, timer2 = 0, timer3 = 0, timer4 = 0, timer5 = 0, valPos1, valPos2, valPos3, valPos4, valPos5;
     void Awake()
     {
@@ -26,31 +28,31 @@ public class ListaDeTarefas : MonoBehaviour
             {
                 Tarefa1 = ObjClicado;
                 timer1 = timerGeral;
-                AdicionarNovo(1); // Associa a tarefa (Por exemplo, limpar slot) para o icone da lista
+                AdicionarNovo(Tarefa1); // Associa a tarefa (Por exemplo, limpar slot) para o icone da lista
             }
             else if (Tarefa2 == null)
             {
                 Tarefa2 = ObjClicado;
                 timer2 = timerGeral;
-                AdicionarNovo(2);
+                AdicionarNovo(Tarefa2);
             }
             else if (Tarefa3 == null)
             {
                 Tarefa3 = ObjClicado;
                 timer3 = timerGeral;
-                AdicionarNovo(3);
+                AdicionarNovo(Tarefa3);
             }
             else if (Tarefa4 == null)
             {
                 Tarefa4 = ObjClicado;
                 timer4 = timerGeral;
-                AdicionarNovo(4);
+                AdicionarNovo(Tarefa4);
             }
             else if (Tarefa5 == null)
             {
                 Tarefa5 = ObjClicado;
                 timer5 = timerGeral;
-                AdicionarNovo(5);
+                AdicionarNovo(Tarefa5);
             }
             ativar = false;
             
@@ -61,8 +63,8 @@ public class ListaDeTarefas : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(0.5f);
             AtualizaLista();
+            yield return new WaitForSeconds(0.5f);
             if(acaoFinalizada == true)
             {
                 yield return new WaitForSeconds(0.2f);
@@ -79,22 +81,18 @@ public class ListaDeTarefas : MonoBehaviour
             {
                 timer1 = 0;
             }
-
             if (Tarefa2 == null)
             {
                 timer2 = 0;
             }
-
             if (Tarefa3 == null)
             {
                 timer3 = 0;
             }
-
             if (Tarefa4 == null)
             {
                 timer4 = 0;
             }
-
             if (Tarefa5 == null)
             {
                 timer5 = 0;
@@ -149,149 +147,75 @@ public class ListaDeTarefas : MonoBehaviour
                     Tarefa5.GetComponent<Obstaculo>().iniciarAtividade = true;
                 }
             }
-        }catch{}
+        
 //---------Inicio do codigo do posicionamento
-        valPos1 = timer1;
-        valPos2 = timer2;
-        valPos3 = timer3;
-        valPos4 = timer4;
-        valPos5 = timer5;
+            valPos1 = timer1;
+            valPos2 = timer2;
+            valPos3 = timer3;
+            valPos4 = timer4;
+            valPos5 = timer5;
 
-        float[] valores = { valPos1, valPos2, valPos3, valPos4, valPos5 };
+            float[] valores = { valPos1, valPos2, valPos3, valPos4, valPos5 };
 
-        System.Array.Sort(valores);
-        for (int i = 0; i < valores.Length; i++)
-        {
-            print(valores[0]);
-            print(valores[1]);
-            print(valores[2]);
-            print(valores[3]);
-            print(valores[4]);
- //--------------------------------------------------------------------------------------------------------------------------------           
-            if (valores[i] == valPos1 - 1 && valPos1 != 0)
+            System.Array.Sort(valores);
+
+            if (valPos1 == 0) Destroy(Icone1);
+            if (valPos2 == 0) Destroy(Icone2);
+            if (valPos3 == 0) Destroy(Icone3);
+            if (valPos4 == 0) Destroy(Icone4);
+            if (valPos5 == 0) Destroy(Icone5);
+
+            for (int i = 4; i >= 0; i--)
             {
-                if (numeradorIconeTarefa1 == i && Icone1 != null)
+                switch (valores[i])
                 {
-                    Icone1.transform.position = Pos1.transform.position;
-                }
-                if (numeradorIconeTarefa2 == i && Icone2 != null)
-                {
-                    Icone2.transform.position = Pos1.transform.position;
-                }
-                if (numeradorIconeTarefa3 == i && Icone3 != null)
-                {
-                    Icone3.transform.position = Pos1.transform.position;
-                }
-                if (numeradorIconeTarefa4 == i && Icone4 != null)
-                {
-                    Icone4.transform.position = Pos1.transform.position;
-                }
-                if (numeradorIconeTarefa5 == i && Icone5 != null)
-                {
-                    Icone5.transform.position = Pos1.transform.position;
+                    case var valor when valor == valPos1:
+                        if (i == 4) Icone1.transform.position = Pos1.transform.position;
+                        if (i == 3) Icone1.transform.position = Pos2.transform.position;
+                        if (i == 2) Icone1.transform.position = Pos3.transform.position;
+                        if (i == 1) Icone1.transform.position = Pos4.transform.position;
+                        if (i == 0) Icone1.transform.position = Pos5.transform.position;
+                        print(Icone1.transform.Find("Tempo_TXT").GetComponent<TMP_Text>().text);
+                        Icone1.transform.Find("Tempo_TXT").GetComponent<TMP_Text>().text = numeradorIconeTarefa1.GetComponent<Obstaculo>().contadorAtual.ToString();
+                        break;
+
+                    case var valor when valor == valPos2:
+                        if (i == 4) Icone2.transform.position = Pos1.transform.position;
+                        if (i == 3) Icone2.transform.position = Pos2.transform.position;
+                        if (i == 2) Icone2.transform.position = Pos3.transform.position;
+                        if (i == 1) Icone2.transform.position = Pos4.transform.position;
+                        if (i == 0) Icone2.transform.position = Pos5.transform.position;
+                        break;
+
+                    case var valor when valor == valPos3:
+                        if (i == 4) Icone3.transform.position = Pos1.transform.position;
+                        if (i == 3) Icone3.transform.position = Pos2.transform.position;
+                        if (i == 2) Icone3.transform.position = Pos3.transform.position;
+                        if (i == 1) Icone3.transform.position = Pos4.transform.position;
+                        if (i == 0) Icone3.transform.position = Pos5.transform.position;
+                        break;
+
+                    case var valor when valor == valPos4:
+                        if (i == 4) Icone4.transform.position = Pos1.transform.position;
+                        if (i == 3) Icone4.transform.position = Pos2.transform.position;
+                        if (i == 2) Icone4.transform.position = Pos3.transform.position;
+                        if (i == 1) Icone4.transform.position = Pos4.transform.position;
+                        if (i == 0) Icone4.transform.position = Pos5.transform.position;
+                        break;
+
+                    case var valor when valor == valPos5:
+                        if (i == 4) Icone5.transform.position = Pos1.transform.position;
+                        if (i == 3) Icone5.transform.position = Pos2.transform.position;
+                        if (i == 2) Icone5.transform.position = Pos3.transform.position;
+                        if (i == 1) Icone5.transform.position = Pos4.transform.position;
+                        if (i == 0) Icone5.transform.position = Pos5.transform.position;
+                        break;
                 }
             }
-//--------------------------------------------------------------------------------------------------------------------------------
-            if (valores[i] == valPos2 - 1 && valPos2 != 0)
-            {
-                if (numeradorIconeTarefa1 == i && Icone1 != null)
-                {
-                    Icone1.transform.position = Pos2.transform.position;
-                }
-                if (numeradorIconeTarefa2 == i && Icone2 != null)
-                {
-                    Icone2.transform.position = Pos2.transform.position;
-                }
-                if (numeradorIconeTarefa3 == i && Icone3 != null)
-                {
-                    Icone3.transform.position = Pos2.transform.position;
-                }
-                if (numeradorIconeTarefa4 == i && Icone4 != null)
-                {
-                    Icone4.transform.position = Pos2.transform.position;
-                }
-                if (numeradorIconeTarefa5 == i && Icone5 != null)
-                {
-                    Icone5.transform.position = Pos2.transform.position;
-                }
-            }
-//--------------------------------------------------------------------------------------------------------------------------------
-            if (valores[i] == valPos3 - 1 && valPos3 != 0)
-            {
-                if (numeradorIconeTarefa1 == i && Icone1 != null)
-                {
-                    Icone1.transform.position = Pos3.transform.position;    
-                }
-                if (numeradorIconeTarefa2 == i && Icone2 != null)
-                {
-                    Icone2.transform.position = Pos3.transform.position;
-                }
-                if (numeradorIconeTarefa3 == i && Icone3 != null)
-                {
-                    Icone3.transform.position = Pos3.transform.position;
-                }
-                if (numeradorIconeTarefa4 == i && Icone4 != null)
-                {
-                    Icone4.transform.position = Pos3.transform.position;
-                }
-                if (numeradorIconeTarefa5 == i && Icone5 != null)
-                {
-                    Icone5.transform.position = Pos3.transform.position;
-                }
-            }
-//--------------------------------------------------------------------------------------------------------------------------------
-            if (valores[i] == valPos4 - 1 && valPos4 != 0)
-            {
-                if (numeradorIconeTarefa1 == i && Icone1 != null)
-                {
-                    Icone1.transform.position = Pos4.transform.position;    
-                }
-                if (numeradorIconeTarefa2 == i && Icone2 != null)
-                {
-                    Icone2.transform.position = Pos4.transform.position;
-                }
-                if (numeradorIconeTarefa3 == i && Icone3 != null)
-                {
-                    Icone3.transform.position = Pos4.transform.position;
-                }
-                if (numeradorIconeTarefa4 == i && Icone4 != null)
-                {
-                    Icone4.transform.position = Pos4.transform.position;
-                }
-                if (numeradorIconeTarefa5 == i && Icone5 != null)
-                {
-                    Icone5.transform.position = Pos4.transform.position;
-                }
-            }
-//--------------------------------------------------------------------------------------------------------------------------------
-            if (valores[i] == valPos5 - 1 && valPos5 != 0)
-            {
-                if (numeradorIconeTarefa1 == i && Icone1 != null)
-                {
-                    Icone1.transform.position = Pos5.transform.position;
-                }
-                if (numeradorIconeTarefa2 == i && Icone2 != null)
-                {
-                    Icone2.transform.position = Pos5.transform.position;
-                }
-                if (numeradorIconeTarefa3 == i && Icone3 != null)
-                {
-                    Icone3.transform.position = Pos5.transform.position;
-                }
-                if (numeradorIconeTarefa4 == i && Icone4 != null)
-                {
-                    Icone4.transform.position = Pos5.transform.position;
-                }
-                if (numeradorIconeTarefa5 == i && Icone5 != null)
-                {
-                    Icone5.transform.position = Pos5.transform.position;
-                }
-            }
-//--------------------------------------------------------------------------------------------------------------------------------
-        }
+        }catch{}
     }
     
-    public void AdicionarNovo(int numerador)
+    public void AdicionarNovo(GameObject numerador)
     {
         if (Icone1 == null && ObjClicado != IconeColocado)
         {

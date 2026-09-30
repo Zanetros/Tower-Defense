@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2523749323472816674}
   - component: {fileID: 7298434086030506615}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Tarefa_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4114712382267492558}
   - component: {fileID: 6108506967236042021}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Tempo_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

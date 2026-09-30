@@ -162,8 +162,13 @@ public class ListaDeTarefas : MonoBehaviour
         System.Array.Sort(valores);
         for (int i = 0; i < valores.Length; i++)
         {
+            print(valores[0]);
+            print(valores[1]);
+            print(valores[2]);
+            print(valores[3]);
+            print(valores[4]);
  //--------------------------------------------------------------------------------------------------------------------------------           
-            if (valores[i] == valPos1 && valPos1 != 0)
+            if (valores[i] == valPos1 - 1 && valPos1 != 0)
             {
                 if (numeradorIconeTarefa1 == i && Icone1 != null)
                 {
@@ -187,7 +192,7 @@ public class ListaDeTarefas : MonoBehaviour
                 }
             }
 //--------------------------------------------------------------------------------------------------------------------------------
-            if (valores[i] == valPos2 && valPos2 != 0)
+            if (valores[i] == valPos2 - 1 && valPos2 != 0)
             {
                 if (numeradorIconeTarefa1 == i && Icone1 != null)
                 {
@@ -211,7 +216,7 @@ public class ListaDeTarefas : MonoBehaviour
                 }
             }
 //--------------------------------------------------------------------------------------------------------------------------------
-            if (valores[i] == valPos3 && valPos3 != 0)
+            if (valores[i] == valPos3 - 1 && valPos3 != 0)
             {
                 if (numeradorIconeTarefa1 == i && Icone1 != null)
                 {
@@ -235,7 +240,7 @@ public class ListaDeTarefas : MonoBehaviour
                 }
             }
 //--------------------------------------------------------------------------------------------------------------------------------
-            if (valores[i] == valPos4 && valPos4 != 0)
+            if (valores[i] == valPos4 - 1 && valPos4 != 0)
             {
                 if (numeradorIconeTarefa1 == i && Icone1 != null)
                 {
@@ -259,7 +264,7 @@ public class ListaDeTarefas : MonoBehaviour
                 }
             }
 //--------------------------------------------------------------------------------------------------------------------------------
-            if (valores[i] == valPos5 && valPos5 != 0)
+            if (valores[i] == valPos5 - 1 && valPos5 != 0)
             {
                 if (numeradorIconeTarefa1 == i && Icone1 != null)
                 {
